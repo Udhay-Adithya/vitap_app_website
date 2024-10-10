@@ -528,8 +528,12 @@ _1769: o => Object.keys(o),
 _1770: (ms, c) =>
               setTimeout(() => dartInstance.exports.$invokeCallback(c),ms),
 _1771: (handle) => clearTimeout(handle),
+_1772: (ms, c) =>
+          setInterval(() => dartInstance.exports.$invokeCallback(c), ms),
+_1773: (handle) => clearInterval(handle),
 _1774: (c) =>
               queueMicrotask(() => dartInstance.exports.$invokeCallback(c)),
+_1775: () => Date.now(),
 _1777: (s, m) => {
           try {
             return new RegExp(s, m);
