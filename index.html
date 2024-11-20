@@ -2,31 +2,20 @@
 <html>
 
 <head>
-  <!--
-    Ensure that the base href points to the correct path for your GitHub Pages.
-  -->
   <base href="/vitap_app_website/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-
-  <!-- Description for SEO -->
   <meta name="description"
     content="Explore the features of the VITAP Student App, designed for student convenience and campus life management.">
-
-  <!-- Keywords for SEO -->
   <meta name="keywords" content="VITAP, Student App, campus management, student portal, university app">
-
-  <!-- Author -->
   <meta name="author" content="VITAP Team">
 
-  <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="VITAP Student App">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <!-- Open Graph meta tags for social media -->
   <meta property="og:title" content="VITAP Student App">
   <meta property="og:description"
     content="Stay connected with VITAP University's campus activities through the VITAP Student App.">
@@ -34,21 +23,73 @@
   <meta property="og:url" content="https://udhay-adithya.github.io/vitap_app_website/">
   <meta property="og:type" content="website">
 
-  <!-- Twitter Card meta tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="VITAP Student App">
   <meta name="twitter:description" content="All-in-one student app for VITAP University.">
   <meta name="twitter:image" content="assets/images/vitap_app_screenshot.png">
   <meta name="twitter:site" content="@VITAPUniversity">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
-
-  <title>VITAP Student App</title>
   <link rel="manifest" href="manifest.json">
+  <title>VITAP Student App</title>
+
+  <style>
+    /* Loading Screen Styles */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #ffffff;
+      /* Background color for the loading screen */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    /* Custom Loader Styles */
+    .loader {
+      width: 50px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(farthest-side, #546eff 94%, #0000) top/8px 8px no-repeat,
+        conic-gradient(#0000 30%, #657dff);
+
+      /* Standard and Vendor-Prefixed Mask Properties for Compatibility */
+      -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+      mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+
+      animation: l13 1s infinite linear;
+    }
+
+    /* Animation */
+    @keyframes l13 {
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader"></div>
+  </div>
+
+  <script>
+    // Hide the loading screen when the Flutter app is ready
+    window.addEventListener('flutter-first-frame', function () {
+      const loader = document.getElementById('loading-screen');
+      if (loader) {
+        loader.style.display = 'none';
+      }
+    });
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 
